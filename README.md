@@ -4,7 +4,7 @@
 
 Orbital Command is a modern full-stack mission control platform inspired by real-world aerospace operations. It provides an interactive dashboard for monitoring satellites, visualizing orbital paths, analyzing telemetry, and simulating space missions in real time.
 
-**Project Status:** Under Active Development
+
 
 ---
 
