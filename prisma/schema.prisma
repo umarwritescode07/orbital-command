@@ -1,0 +1,146 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String     @id @default(uuid())
+  email        String     @unique
+  name         String?
+  clerkId      String?    @unique
+  passwordHash String     @default("")
+  role         String     @default("VIEWER")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+  ackedAlerts  Alert[]    @relation("AlertAcknowledgeBy")
+
+  @@index([email])
+}
+
+model Constellation {
+  id           String      @id @default(uuid())
+  name         String      @unique
+  healthScore  Float       @default(100.0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  satellites   Satellite[]
+}
+
+model Mission {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  status      String        @default("PLANNING")
+  launchDate  DateTime
+  description String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  satellites  Satellite[]
+}
+
+model Satellite {
+  id              String          @id @default(uuid())
+  name            String
+  status          String          @default("ACTIVE")
+  orbit           String          @default("LEO")
+  velocity        Float           // km/s
+  altitude        Float           // km
+  fuel            Float           // % percentage
+  battery         Float           // % percentage
+  temperature     Float           // degrees Celsius
+  signalStrength  Float           // dBm
+  cpuUsage        Float           // % percentage
+  solarOutput     Float           // Watts
+  constellationId String?
+  constellation   Constellation?  @relation(fields: [constellationId], references: [id], onDelete: SetNull)
+  missionId       String?
+  mission         Mission?        @relation(fields: [missionId], references: [id], onDelete: SetNull)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  telemetry       Telemetry[]
+  alerts          Alert[]
+  anomalies       Anomaly[]
+
+  @@index([status])
+  @@index([constellationId])
+}
+
+model Telemetry {
+  id             String    @id @default(uuid())
+  satelliteId    String
+  satellite      Satellite @relation(fields: [satelliteId], references: [id], onDelete: Cascade)
+  battery        Float
+  temperature    Float
+  fuel           Float
+  cpuUsage       Float
+  signalStrength Float
+  solarOutput    Float
+  velocity       Float
+  altitude       Float
+  timestamp      DateTime  @default(now())
+
+  @@index([satelliteId, timestamp(sort: Desc)])
+  @@index([timestamp(sort: Desc)])
+}
+
+model Alert {
+  id             String        @id @default(uuid())
+  satelliteId    String
+  satellite      Satellite     @relation(fields: [satelliteId], references: [id], onDelete: Cascade)
+  type           String
+  severity       String        @default("MEDIUM")
+  status         String        @default("ACTIVE")
+  message        String
+  createdAt      DateTime      @default(now())
+  acknowledgedAt DateTime?
+  acknowledgedBy String?
+  acknowlexer    User?         @relation("AlertAcknowledgeBy", fields: [acknowledgedBy], references: [id])
+
+  @@index([satelliteId, status])
+  @@index([status])
+  @@index([createdAt(sort: Desc)])
+}
+
+model GroundStation {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  latitude   Float
+  longitude  Float
+  status     String   @default("ONLINE") // ONLINE, OFFLINE, MAINTENANCE
+  latency    Float    // ms
+  throughput Float    // Mbps
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Anomaly {
+  id          String        @id @default(uuid())
+  satelliteId String
+  satellite   Satellite     @relation(fields: [satelliteId], references: [id], onDelete: Cascade)
+  parameter   String        // "battery", "temperature", "fuel", etc.
+  description String
+  status      String        @default("OPEN")
+  detectedAt  DateTime      @default(now())
+  resolvedAt  DateTime?
+  rootCause   String?
+  prediction  String?
+  recommendations String?
+
+  @@index([satelliteId, status])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String
+  details   String
+  ipAddress String?
+  timestamp DateTime @default(now())
+
+  @@index([userId, timestamp(sort: Desc)])
+}
