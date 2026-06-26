@@ -1,90 +1,100 @@
-# 🚀 Orbital Command
+# Orbital Command
 
-**Enterprise-grade Aerospace Mission Control Platform**
+## Enterprise-Grade Aerospace Mission Control Platform
 
 Orbital Command is a modern full-stack mission control platform inspired by real-world aerospace operations. It provides an interactive dashboard for monitoring satellites, visualizing orbital paths, analyzing telemetry, and simulating space missions in real time.
 
-> **Project Status:** 🚧 Under Active Development
+**Project Status:** Under Active Development
 
 ---
 
-## Overview
+# Overview
 
 Orbital Command is designed to simulate the experience of a professional satellite operations center. The platform combines real-time telemetry visualization, orbital mechanics, interactive 3D graphics, and mission monitoring into a single modern web application.
 
-The goal of this project is to showcase enterprise-level frontend architecture, backend APIs, real-time data handling, and immersive data visualization using modern web technologies.
+The primary objective of this project is to demonstrate enterprise-level frontend architecture, backend API development, real-time data handling, and advanced visualization using modern web technologies.
 
 ---
 
-## Features
+# Features
 
-### Satellite Tracking
-- Interactive satellite visualization
-- Ground station monitoring
-- Live position updates
-- Orbital path rendering
+## Satellite Tracking
 
-### Telemetry Dashboard
-- Real-time telemetry charts
-- Health monitoring
-- Mission analytics
-- Performance metrics
+* Interactive satellite visualization
+* Ground station monitoring
+* Live position updates
+* Orbital path rendering
 
-### Orbital Simulation
-- Orbit visualization
-- Space debris tracking
-- Earth globe rendering
-- Constellation management
+## Telemetry Dashboard
 
-### Mission Operations
-- Flight Director dashboard
-- Alert management
-- Mission status monitoring
-- Operational analytics
+* Real-time telemetry charts
+* Health monitoring
+* Mission analytics
+* Performance metrics
 
-### Authentication
-- Secure Login
-- User Registration
-- Protected Routes
-- Session Management
+## Orbital Simulation
 
----
+* Orbit visualization
+* Space debris tracking
+* Earth globe rendering
+* Constellation management
 
-## Tech Stack
+## Mission Operations
 
-### Frontend
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
+* Flight Director dashboard
+* Alert management
+* Mission status monitoring
+* Operational analytics
 
-### 3D Visualization
-- Three.js
-- React Three Fiber
+## Authentication
 
-### Backend
-- Next.js API Routes
-- Node.js
-
-### Database
-- Prisma ORM
-- PostgreSQL (Planned)
-
-### Real-time
-- WebSockets
-- Redis (Planned)
+* Secure user authentication
+* User registration
+* Protected routes
+* Session management
 
 ---
 
-## Project Structure
+# Tech Stack
 
-```
+## Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+
+## 3D Visualization
+
+* Three.js
+* React Three Fiber
+
+## Backend
+
+* Next.js API Routes
+* Node.js
+
+## Database
+
+* Prisma ORM
+* PostgreSQL (Planned)
+
+## Real-Time Services
+
+* WebSockets
+* Redis (Planned)
+
+---
+
+# Project Structure
+
+```text
 src/
- ├── app/
- ├── components/
- ├── hooks/
- ├── lib/
- ├── middleware.ts
+├── app/
+├── components/
+├── hooks/
+├── lib/
+└── middleware.ts
 
 prisma/
 .github/
@@ -92,64 +102,64 @@ prisma/
 
 ---
 
-## Current Development Status
+# Development Status
 
-### Completed
+## Completed
 
-- Authentication System
-- Dashboard Layout
-- API Routes
-- Telemetry Module
-- Satellite Tracking
-- Orbit Visualization
-- Flight Director Module
-- Project Architecture
+* Authentication System
+* Dashboard Layout
+* REST API Routes
+* Telemetry Module
+* Satellite Tracking
+* Orbit Visualization
+* Flight Director Module
+* Overall Project Architecture
 
-### In Progress
+## In Progress
 
-- Real-time Telemetry
-- AI Mission Analytics
-- Notification System
-- Live Data Streaming
-- Performance Optimization
+* Real-Time Telemetry
+* AI Mission Analytics
+* Notification System
+* Live Data Streaming
+* Performance Optimization
 
-### Planned
+## Planned
 
-- Deployment
-- Multi-user Support
-- Mission Playback
-- Dark/Light Themes
-- Advanced Analytics
+* Production Deployment
+* Multi-user Support
+* Mission Playback
+* Theme Support
+* Advanced Analytics
 
 ---
 
-## Installation
+# Installation
 
-Clone the repository
+Clone the repository.
 
 ```bash
 git clone https://github.com/umarwritescode07/orbital-command.git
 ```
 
-Go to the project directory
+Navigate to the project directory.
 
 ```bash
 cd orbital-command
 ```
 
-Install dependencies
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-Create environment file
+Create the environment file.
 
 ```bash
 cp .env.example .env
 ```
 
-Run the development server
+Start the development server.
 
 ```bash
 npm run dev
@@ -157,13 +167,13 @@ npm run dev
 
 ---
 
-## Environment Variables
+# Environment Variables
 
-Create a `.env` file using `.env.example`.
+Create a `.env` file based on `.env.example`.
 
 Example:
 
-```
+```env
 DATABASE_URL=
 JWT_SECRET=
 REDIS_URL=
@@ -171,44 +181,39 @@ REDIS_URL=
 
 ---
 
-## Screenshots
+# Screenshots
 
-Screenshots will be added after the project reaches a stable release.
-
----
-
-## Roadmap
-
-- Real-time satellite communication
-- Advanced orbital simulation
-- AI-powered anomaly detection
-- Mission timeline playback
-- Interactive analytics dashboard
-- Deployment to production
+Project screenshots will be added once the application reaches a stable release.
 
 ---
 
-## Contributing
+# Roadmap
+
+* Real-time satellite communication
+* Advanced orbital simulation
+* AI-powered anomaly detection
+* Mission timeline playback
+* Interactive analytics dashboard
+* Production deployment
+
+---
+
+# Contributing
 
 Contributions, suggestions, and feedback are welcome.
 
-Feel free to open an issue or submit a pull request.
+If you would like to improve the project, feel free to open an issue or submit a pull request.
 
 ---
 
-## License
+# License
 
 This project is intended for educational and portfolio purposes.
 
 ---
 
-## Author
+# Author
 
-**Umar**
+**Umar Abdullah**
 
-GitHub:
-https://github.com/umarwritescode07
-
----
-
-### If you found this project useful, consider giving it a star.
+GitHub: https://github.com/umarwritescode07
